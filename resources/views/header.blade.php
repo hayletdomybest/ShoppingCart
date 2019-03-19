@@ -6,8 +6,19 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav ml-auto">
         <li class='mr-3'><a class="nav-item nav-link" href="{{route('index')}}"><i class="fas fa-home"></i> 回首頁<span class="sr-only">(current)</span></a></li>
-          <li class='mr-3'><a class="nav-item nav-link" href="#"><i class="fas fa-shopping-cart"></i>
-            購物車<span class="sr-only">(current)</span></a></li>
+        <li class='mr-3'><a class="nav-item nav-link" href="{{route('cart')}}"><i class="fas fa-shopping-cart"></i>
+            購物車<span class="sr-only">(current)</span>
+            @if(Auth::check())
+            <span class="badge badge-primary">
+            @if($cart = Session::get('Cart'.Auth::user()->id))
+                {{$cart->totalQuantity}}
+            @else
+                0
+            @endif
+            </span> 
+            @endif
+        </a>
+        </li>
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   @if(Auth::check())

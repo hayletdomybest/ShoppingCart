@@ -10,11 +10,23 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['prefix'=>'shopping'],function(){
+    Route::get('/',[
+        'uses' => 'ShoppingController@Index',
+        'as' => 'index'
+    ]);
+    Route::get('/cart',[
+        'uses' => 'ShoppingController@Cart',
+        'as' => 'cart',
+        'middleware' => 'auth'
+    ]);
+    Route::get('/add-to-cart/{id}',[
+        'uses' => 'ShoppingController@AddToCart',
+        'as' => 'add',
+        'middleware' => 'auth'        
+    ]);
+});
 
-Route::get('/',[
-    'uses' => 'ShoppingController@Index',
-    'as' => 'index'
-]);
 
 Route::group(['prefix' => 'user'],function(){
     Route::get('/login',function(){

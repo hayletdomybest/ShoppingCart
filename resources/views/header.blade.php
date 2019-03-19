@@ -10,10 +10,19 @@
             購物車<span class="sr-only">(current)</span></a></li>
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                登入使用者
+                  @if(Auth::check())
+                    {{Auth::user()->email}}
+                  @else
+                    登入使用者
+                  @endif
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">登入</a>
+                @if (Auth::check())
+              <a class="dropdown-item" href="{{route('user.logout')}}">登出</a>
+                @else
+                    <a class="dropdown-item" href="{{route('user.login')}}">登入</a>
+                @endif
+                
                 <a class="dropdown-item" href="#">註冊</a>
               </div>
           </li>

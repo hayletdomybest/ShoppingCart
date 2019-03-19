@@ -1,0 +1,13 @@
+.img-thumbnail img{
+    max-height: 150px;
+    max-width: 200px;
+}
+.price{
+    font-weight: bold;
+    color: red;
+    font-size: 20px;
+}
+
+.col{
+    margin-bottom:15px;
+}

@@ -14,7 +14,7 @@ class UserController extends Controller
             'password' => 'required|min:4',
         ]);
         if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')]))
-            return redirect()->back();
+            return redirect()->route('index');
         
         return redirect()->back()->withErrors(['login'=>'信箱&密碼輸入錯誤']);;
         
@@ -23,6 +23,6 @@ class UserController extends Controller
     function UserLogout(Request $request)
     {
         Auth::logout();
-        return redirect()->back();
+        return redirect()->route('index');
     }
 }

@@ -5,7 +5,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav ml-auto">
-          <li class='mr-3'><a class="nav-item nav-link" href="#"><i class="fas fa-home"></i> 回首頁<span class="sr-only">(current)</span></a></li>
+        <li class='mr-3'><a class="nav-item nav-link" href="{{route('index')}}"><i class="fas fa-home"></i> 回首頁<span class="sr-only">(current)</span></a></li>
           <li class='mr-3'><a class="nav-item nav-link" href="#"><i class="fas fa-shopping-cart"></i>
             購物車<span class="sr-only">(current)</span></a></li>
           <li class="nav-item dropdown">
@@ -13,7 +13,7 @@
                   @if(Auth::check())
                     {{Auth::user()->email}}
                   @else
-                    登入使用者
+                    使用者
                   @endif
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

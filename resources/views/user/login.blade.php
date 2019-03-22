@@ -1,5 +1,7 @@
 @extends('layout.master')
-
+@section('title')
+使用者登入
+@endsection
 @section('content')
     <div class='row justify-content-center'>
         <div class=" col-md-4 col-md-offset-4">

@@ -17,7 +17,16 @@ class ShoppingController extends Controller
 
     function Cart()
     {
+        $cart = session::get('Cart'.Auth::user()->id);
+        if($cart){
+            $items = $cart->items;
+            
+            return view('shop.cart',['items'=>$items , 
+                                     'totalPrice'=> $cart->totalPrice
+                    ]);
+        }
         return view('shop.cart');
+
     }
 
     function AddToCart(Request $request,$id)
@@ -35,6 +44,11 @@ class ShoppingController extends Controller
         return redirect()->back();
 
       
+    }
+
+    function GetToCheckout($total)
+    {
+        return view('shop.checkoutForm',['total'=> $total]);
     }
 
 }

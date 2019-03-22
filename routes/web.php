@@ -15,16 +15,21 @@ Route::group(['prefix'=>'shopping'],function(){
         'uses' => 'ShoppingController@Index',
         'as' => 'index'
     ]);
-    Route::get('/cart',[
-        'uses' => 'ShoppingController@Cart',
-        'as' => 'cart',
-        'middleware' => 'auth'
-    ]);
-    Route::get('/add-to-cart/{id}',[
-        'uses' => 'ShoppingController@AddToCart',
-        'as' => 'add',
-        'middleware' => 'auth'        
-    ]);
+    Route::group(['middleware' => 'auth'], function(){
+        Route::get('/cart',[
+            'uses' => 'ShoppingController@Cart',
+            'as' => 'cart',
+        ]);
+        Route::get('/add-to-cart/{id}',[
+            'uses' => 'ShoppingController@AddToCart',
+            'as' => 'add',      
+        ]);
+        Route::get('/checkout/{total}',[
+            'uses' => 'ShoppingController@GetToCheckout',
+            'as' => 'checkoutForm'
+        ]);
+    });
+
 });
 
 

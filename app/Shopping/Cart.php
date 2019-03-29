@@ -14,7 +14,7 @@ namespace App\Shopping;
 
         function addToCart($product,$id)
         {
-            $storeItem = ['qty'=> 0, 'price'=> $product->price, 'item' => $product];
+            $storeItem = ['qty'=> 0, 'price'=> $product->price, 'title' => $product->title];
 
             if($this->items)
                 if(array_key_exists($id,$this->items))

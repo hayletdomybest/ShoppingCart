@@ -9,7 +9,7 @@
         @foreach ($items as $item)
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <div>
-                    <span>{{$item['item']->title}}</span>    
+                    <span>{{$item['title']}}</span>    
                 </div>
                 <div>
                     <span class='badge badge-danger mr-3'>單價: {{$item['price']}}</span>

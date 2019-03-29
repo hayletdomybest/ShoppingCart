@@ -28,9 +28,25 @@ Route::group(['prefix'=>'shopping'],function(){
             'uses' => 'ShoppingController@GetToCheckout',
             'as' => 'checkoutForm'
         ]);
+        Route::post('/paymentFinish',[
+            'uses' => 'ShoppingController@PayMentFinish',
+            'as' => 'paymentFinish'
+        ]);
+        Route::get('/paymentFinish/FinishCheckout',[
+            'uses' => 'ShoppingController@FinishCheckout',
+            'as' => 'FinishCheckout'
+        ]);
     });
 
 });
+Route::get('Testcheckout',[
+    'uses' => 'ShoppingController@GetToCheckout',
+    'as' => 'checkout'
+]);
+Route::Post('Testcheckout',[
+    'uses' => 'ShoppingController@PostCheckout',
+    'as' => 'checkout'
+]);
 
 
 Route::group(['prefix' => 'user'],function(){

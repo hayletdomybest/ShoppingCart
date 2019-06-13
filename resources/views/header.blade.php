@@ -34,7 +34,7 @@
                     <a class="dropdown-item" href="{{route('user.login')}}">登入</a>
                 @endif
                 
-                <a class="dropdown-item" href="#">註冊</a>
+                <a class="dropdown-item" href="{{route('user.signup')}}">註冊</a>
               </div>
           </li>
         </ul>

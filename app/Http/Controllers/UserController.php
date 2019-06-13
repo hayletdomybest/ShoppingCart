@@ -25,4 +25,13 @@ class UserController extends Controller
         Auth::logout();
         return redirect()->route('index');
     }
+
+    function UserSignup(Request $request)
+    {
+        $user = new User();
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
+        return redirect()->route('user.login');
+    }
 }

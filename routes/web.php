@@ -57,9 +57,16 @@ Route::group(['prefix' => 'user'],function(){
         'uses' => 'UserController@UserLogout',
         'as' => 'user.logout'  
     ]);
+    Route::get('/signup',function(){
+        return view('user.signup');  
+    })->name('user.signup');
     Route::post('/login',[
         'uses' => 'UserController@UserLogin',
         'as' => 'user.login'
+    ]);
+    Route::post('/signup',[
+        'uses' => 'UserController@UserSignup',
+        'as' => 'user.signup'
     ]);
 });
 

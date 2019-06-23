@@ -5,8 +5,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav ml-auto">
-        <li class='mr-3'><a class="nav-item nav-link" href="{{route('index')}}"><i class="fas fa-home"></i> 回首頁<span class="sr-only">(current)</span></a></li>
-        <li class='mr-3'><a class="nav-item nav-link" href="{{route('cart')}}"><i class="fas fa-shopping-cart"></i>
+        <li class='mr-3'><a class="nav-item nav-link" href="{{route('shop.index')}}"><i class="fas fa-home"></i> 回首頁<span class="sr-only">(current)</span></a></li>
+        <li class='mr-3'><a class="nav-item nav-link" href="{{route('shop.cart')}}"><i class="fas fa-shopping-cart"></i>
             購物車<span class="sr-only">(current)</span>
             @if(Auth::check())
             <span class="badge badge-primary">
@@ -29,7 +29,8 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 @if (Auth::check())
-              <a class="dropdown-item" href="{{route('user.logout')}}">登出</a>
+                    <a class="dropdown-item" href="{{route('user.logout')}}">登出</a>
+                    <a class="dropdown-item" href="{{route('shop.sale.upload')}}">物品上架</a>
                 @else
                     <a class="dropdown-item" href="{{route('user.login')}}">登入</a>
                 @endif

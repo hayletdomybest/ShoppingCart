@@ -13,3 +13,6 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
+
+mix.copy('node_modules/bootstrap-imageupload/dist/css/bootstrap-imageupload.min.css', 'public/css/bootstrap-imageupload.min.css');
+mix.copy('node_modules/bootstrap-imageupload/dist/js/bootstrap-imageupload.min.js', 'public/js/bootstrap-imageupload.min.js');

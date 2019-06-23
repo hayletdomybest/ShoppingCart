@@ -11,7 +11,7 @@
                         <div class='row justify-content-end'>
                             <div class='price col-12'>${{$product->price}}</div>
                             <div class='col-auto ml-auto px-1'>
-                            <a href="{{route('add',['id' => $product->id])}}" class="btn btn-success" role="button">加入購物車</a>
+                            <a href="{{route('shop.add',['id' => $product->id])}}" class="btn btn-success" role="button">加入購物車</a>
                             </div>
                             <div class='col-auto pl-0 pr-3'>
                                 <a href="#" class="btn btn-primary" role="button">立即購買</a>

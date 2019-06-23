@@ -14,16 +14,16 @@ class UserController extends Controller
             'password' => 'required|min:4',
         ]);
         if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')]))
-            return redirect()->route('index');
+            return redirect()->route('shop.index');
         
         return redirect()->back()->withErrors(['login'=>'信箱&密碼輸入錯誤']);;
         
     }
 
-    function UserLogout(Request $request)
+    function UserLogout()
     {
         Auth::logout();
-        return redirect()->route('index');
+        return redirect()->route('shop.index');
     }
 
     function UserSignup(Request $request)
@@ -32,6 +32,8 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->save();
+        if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')]))
+            return redirect()->route('shop.index');
         return redirect()->route('user.login');
     }
 }

@@ -7,6 +7,7 @@ use App\Product;
 use App\Shopping\Cart;
 use Auth;
 use Session;
+use Illuminate\Support\Facades\Validator;
 class ShoppingController extends Controller
 {
     function Index()
@@ -26,6 +27,45 @@ class ShoppingController extends Controller
                     ]);
         }
         return view('shop.cart');
+
+    }
+
+    function GetSaleUpload()
+    {
+        return view('shop.sale.sale');
+    }
+
+    function PostSaleUpload(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'title' => 'required|min:1|max:50',
+            'price' => 'required|integer',
+        ]);
+
+        if ($validator->fails()) {
+            return  back()->withErrors($validator)
+                          ->withInput();
+        }
+        Session::forget('errors');
+
+        $id = Product::max('id') + 1;
+
+        $id = str_pad($id,strlen($id) + 1,'0',STR_PAD_LEFT);
+
+        $imageName = $id .'.jpg';
+        if(file_exists('./picture/'. $imageName))
+            return back()->withErrors('檔案撞名');
+        request()->image->move(public_path('picture'), $imageName);
+
+        $product  = new Product();
+        $product->imagePath =  './picture/'.$imageName;
+        $product->title = request()->input('title');
+        $product->price = request()->input('price');
+        $product->description  = request()->input('description');
+        $product->save();
+
+        return redirect()->route('shop.index');
 
     }
 

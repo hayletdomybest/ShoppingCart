@@ -10,35 +10,47 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/',function (){
+    return redirect()->route('shop.index');
+});
 Route::group(['prefix'=>'shopping'],function(){
     Route::get('/',[
         'uses' => 'ShoppingController@Index',
-        'as' => 'index'
+        'as' => 'shop.index'
     ]);
     Route::group(['middleware' => 'auth'], function(){
         Route::get('/cart',[
             'uses' => 'ShoppingController@Cart',
-            'as' => 'cart',
+            'as' => 'shop.cart',
+        ]);
+        Route::get('/saleUpload',[
+            'uses' => 'ShoppingController@GetSaleUpload',
+            'as' => 'shop.sale.upload',
+        ]);
+        Route::post('/uploadSubmit',[
+            'uses' => 'ShoppingController@PostSaleUpload',
+            'as' => 'shop.Upload.submit',
         ]);
         Route::get('/add-to-cart/{id}',[
             'uses' => 'ShoppingController@AddToCart',
-            'as' => 'add',      
+            'as' => 'shop.add',
         ]);
         Route::get('/checkout/{total}',[
             'uses' => 'ShoppingController@GetToCheckout',
-            'as' => 'checkoutForm'
+            'as' => 'shop.checkoutForm'
         ]);
         Route::post('/paymentFinish',[
             'uses' => 'ShoppingController@PayMentFinish',
-            'as' => 'paymentFinish'
+            'as' => 'shop.paymentFinish'
         ]);
         Route::get('/paymentFinish/FinishCheckout',[
             'uses' => 'ShoppingController@FinishCheckout',
-            'as' => 'FinishCheckout'
+            'as' => 'shop.finishCheckout'
         ]);
     });
 
 });
+
 Route::get('Testcheckout',[
     'uses' => 'ShoppingController@GetToCheckout',
     'as' => 'checkout'

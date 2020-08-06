@@ -26,7 +26,7 @@
             總額: {{$totalPrice}}
     </div>
     <div class='row justify-content-center'>
-        <a href={{route('checkoutForm',['total'=>$totalPrice])}} type="button" class="btn btn-success">付款</a>
+        <a href={{route('shop.checkoutForm',['total' => $totalPrice])}} type="button" class="btn btn-success">付款</a>
     </div>
     
     @else

@@ -32,7 +32,7 @@ class ShoppingController extends Controller
 
     function GetSaleUpload()
     {
-        return view('shop.sale.sale');
+        return view('shop.Sale.sale');
     }
 
     function PostSaleUpload(Request $request)
@@ -88,14 +88,14 @@ class ShoppingController extends Controller
 
     function GetToCheckout($total)
     {
-        return view('shop.checkout.checkoutForm',['total'=> $total]);
+        return view('shop.Checkout.checkoutForm',['total'=> $total]);
     }
 
     function PayMentFinish(Request $request)
     {
         // Set your secret key: remember to change this to your live secret key in production
         // See your keys here: https://dashboard.stripe.com/account/apikeys
-        \Stripe\Stripe::setApiKey("sk_test_QeRErjuxzt3l0j6OEtZ4v4Fi00f3vFFPWv");
+        \Stripe\Stripe::setApiKey(getenv('STRIP_KEY'));
 
         // Token is created using Checkout or Elements!
         // Get the payment token ID submitted by the form:

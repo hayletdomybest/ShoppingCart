@@ -10,10 +10,13 @@
 ```=javascript
 1. git clone 
 2. cp .ev.example .ev
-3. vim .ev
-4. php artisan key:generate
-5. php artisan migrate
-6. php artisan db:seed
+3. docker-compose up -d --build site
+4. docker-compose run --rm composer install
+5. docker-compose run --rm artisan key:generate
+6. docker-compose run --rm artisan migrate
+7. docker-compose run --rm artisan db:seed
+8. Open browser 127.0.0.1
+
 ```
 
 ---
